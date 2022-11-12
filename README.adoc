@@ -1,0 +1,48 @@
+= Simple CMake project template
+:toc: left
+:source-highlighter: rouge
+:url-catch2: https://github.com/catchorg/Catch2
+:url-cmake-fetch-content: https://cmake.org/cmake/help/latest/module/FetchContent.html
+:url-cmake-presets: https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
+
+This repository contains a simple template for new CMake projects.
+
+For more information on the individual features, see the sections below.
+
+== .gitignore
+
+The `.gitignore` file contains the following definitions:
+
+* Several commonly used directories. Currently `.vs`, `out` and `build`.
+* {url-cmake-presets}[`CMakeUserPresets.json`] local presets file.
+
+== Directory Layout
+
+There is a single `CMakeLists.txt` file located in the root of the project.
+
+`src/`::
+Sources for building the project.
+`test/`::
+Tests related to the project.
+
+== External Libraries
+
+The template uses {url-cmake-fetch-content}[`FetchContent`] to automatically retrieve {url-catch2}[Catch2].
+
+== Cloning the repository
+
+One way to use the template is to download the repository as single archive and then extract it somewhere.
+
+Another option is to clone it and then modify the remote URL to match the one of your own repository. For example:
+
+```bash
+git clone <repo-url> <your-project-name>
+cd <your-project-name>
+git remote set-url origin <your-remote>
+```
+
+where
+
+* `<your-project-name>` is the name you want to give to your project.
+* `<repo-url>` is the URL you want to use for this repo (e.g. you may want to clone it via SSH or HTTPS).
+* `<your-remote>` is the URL of your own remote.
