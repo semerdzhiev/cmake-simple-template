@@ -1,6 +1,6 @@
 = Simple CMake project template
 :toc: left
-:source-highlighter: rouge
+:source-highlighter: highlight.js
 :url-catch2: https://github.com/catchorg/Catch2
 :url-cmake-fetch-content: https://cmake.org/cmake/help/latest/module/FetchContent.html
 :url-cmake-presets: https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
@@ -35,14 +35,36 @@ One way to use the template is to download the repository as single archive and 
 
 Another option is to clone it and then modify the remote URL to match the one of your own repository. For example:
 
-```bash
+[source,bash]
 git clone <repo-url> <your-project-name>
 cd <your-project-name>
 git remote set-url origin <your-remote>
-```
 
 where
 
 * `<your-project-name>` is the name you want to give to your project.
 * `<repo-url>` is the URL you want to use for this repo (e.g. you may want to clone it via SSH or HTTPS).
 * `<your-remote>` is the URL of your own remote.
+
+== Building the project
+
+To build the project and run the tests, create a directory for an out-of-source build (e.g. `build/`), then generate the build files there and build the project. For example:
+
+[source,bash]
+mkdir build
+cd build
+cmake ..
+cmake --build .
+ctest
+
+The `CMakeLists.txt` file contains the necessary directive, which passes the https://learn.microsoft.com/en-us/cpp/build/reference/mp-build-with-multiple-processes?view=msvc-170[`/MP` switch] to Visual C++, so that jobs are ran in parallel. This can significantly speed up build times.
+
+Another option is to use CMake's https://cmake.org/cmake/help/latest/manual/cmake.1.html#build-tool-mode[`--parallel`/`-j` switch]:
+
+[source,bash]
+cmake --build . --parallel
+
+If you want to specify the number of jobs, you can do so:
+
+[source,bash]
+cmake --build . --parallel 8
