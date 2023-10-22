@@ -5,6 +5,8 @@
 :url-cmake-fetch-content: https://cmake.org/cmake/help/latest/module/FetchContent.html
 :url-cmake-presets: https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
 
+IMPORTANT: This repository is kept for backup purposes only. All future development will be done on the https://github.com/semerdzhiev/cmake-templates[cmake-templates] repository.
+
 This repository contains a simple template for new CMake projects.
 
 For more information on the individual features, see the sections below.
